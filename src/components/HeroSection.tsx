@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import coachPortrait from "@/assets/coach-portrait.jpg";
+import coachPortrait from "@/assets/coach-portrait.png";
 
 const HeroSection = () => {
   const scrollToContact = () => {
