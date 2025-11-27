@@ -28,7 +28,7 @@ const HeroSection = () => {
                 <img
                   src={coachPortrait}
                   alt="Coach professionnelle"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top scale-110"
                 />
               </div>
             </div>
