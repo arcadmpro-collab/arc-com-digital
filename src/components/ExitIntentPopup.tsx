@@ -11,11 +11,13 @@ import { Input } from "@/components/ui/input";
 import { Download, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import livreImage from "@/assets/livre-7-erreurs.png";
+import { supabase } from "@/integrations/supabase/client";
 
 const ExitIntentPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [hasShown, setHasShown] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -33,15 +35,33 @@ const ExitIntentPopup = () => {
     };
   }, [hasShown]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      toast({
-        title: "Merci !",
-        description: "Vous allez recevoir votre guide par email dans quelques instants.",
-      });
-      setEmail("");
-      setIsOpen(false);
+    if (email && !isSubmitting) {
+      setIsSubmitting(true);
+      try {
+        const { error } = await supabase.functions.invoke("send-to-sheet", {
+          body: { email },
+        });
+
+        if (error) throw error;
+
+        toast({
+          title: "Merci !",
+          description: "Vous allez recevoir votre guide par email dans quelques instants.",
+        });
+        setEmail("");
+        setIsOpen(false);
+      } catch (error) {
+        console.error("Error submitting email:", error);
+        toast({
+          title: "Erreur",
+          description: "Une erreur est survenue. Veuillez réessayer.",
+          variant: "destructive",
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -110,9 +130,10 @@ const ExitIntentPopup = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold h-12 group"
+                disabled={isSubmitting}
+                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold h-12 group disabled:opacity-50"
               >
-                Télécharger le guide gratuit
+                {isSubmitting ? "Envoi en cours..." : "Télécharger le guide gratuit"}
                 <Download className="ml-2 group-hover:translate-y-1 transition-transform" />
               </Button>
               <p className="text-xs text-muted-foreground text-center">

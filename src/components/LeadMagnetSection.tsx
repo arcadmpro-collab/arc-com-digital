@@ -4,19 +4,39 @@ import { Input } from "@/components/ui/input";
 import { Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import livreImage from "@/assets/livre-7-erreurs.png";
+import { supabase } from "@/integrations/supabase/client";
 
 const LeadMagnetSection = () => {
   const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      toast({
-        title: "Merci !",
-        description: "Vous allez recevoir votre guide par email dans quelques instants.",
-      });
-      setEmail("");
+    if (email && !isSubmitting) {
+      setIsSubmitting(true);
+      try {
+        const { error } = await supabase.functions.invoke("send-to-sheet", {
+          body: { email },
+        });
+
+        if (error) throw error;
+
+        toast({
+          title: "Merci !",
+          description: "Vous allez recevoir votre guide par email dans quelques instants.",
+        });
+        setEmail("");
+      } catch (error) {
+        console.error("Error submitting email:", error);
+        toast({
+          title: "Erreur",
+          description: "Une erreur est survenue. Veuillez réessayer.",
+          variant: "destructive",
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -91,9 +111,10 @@ const LeadMagnetSection = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="bg-primary hover:bg-primary/90 text-white font-semibold h-12 px-8 group whitespace-nowrap"
+                  disabled={isSubmitting}
+                  className="bg-primary hover:bg-primary/90 text-white font-semibold h-12 px-8 group whitespace-nowrap disabled:opacity-50"
                 >
-                  Télécharger le guide
+                  {isSubmitting ? "Envoi..." : "Télécharger le guide"}
                   <Download className="ml-2 group-hover:translate-y-1 transition-transform" />
                 </Button>
               </div>
