@@ -2,3 +2,6 @@ project_id = "ahfefachhtjpajbrmzqf"
 
 [functions.send-to-sheet]
 verify_jwt = false
+
+[functions.send-contact-notification]
+verify_jwt = false

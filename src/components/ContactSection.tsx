@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, Send } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -14,36 +15,33 @@ const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Remplacez cette URL par votre URL Formfree
-  const FORMFREE_URL = "VOTRE_URL_FORMFREE_ICI";
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(FORMFREE_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }),
-      });
+      const { data, error } = await supabase.functions.invoke(
+        "send-contact-notification",
+        {
+          body: {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+          },
+        }
+      );
 
-      if (response.ok) {
-        toast({
-          title: "Message envoyé !",
-          description: "Nous vous recontacterons très bientôt.",
-        });
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        throw new Error("Erreur lors de l'envoi");
+      if (error) {
+        throw error;
       }
+
+      toast({
+        title: "Message envoyé !",
+        description: "Nous vous recontacterons très bientôt.",
+      });
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
+      console.error("Error submitting contact form:", error);
       toast({
         title: "Erreur",
         description: "Impossible d'envoyer le message. Veuillez réessayer.",
