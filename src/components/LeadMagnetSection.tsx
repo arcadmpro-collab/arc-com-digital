@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import livreImage from "@/assets/livre-7-erreurs.png";
+import livreImage from "@/assets/livre-7-erreurs-new.jpg";
 import { supabase } from "@/integrations/supabase/client";
 
 const LeadMagnetSection = () => {
