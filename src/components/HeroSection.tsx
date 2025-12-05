@@ -13,9 +13,9 @@ const HeroSection = () => {
   return (
     <section id="hero" className="py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center">
           {/* Image with Colorful Arcs */}
-          <div className="flex justify-center md:justify-start order-1">
+          <div className="flex justify-center md:justify-start order-1 md:col-span-2">
             <div className="relative">
               {/* Colored arc rings */}
               <div className="absolute inset-0 -m-8 rounded-full border-[12px] border-primary opacity-20"></div>
@@ -35,7 +35,7 @@ const HeroSection = () => {
           </div>
 
           {/* Content */}
-          <div className="order-2 space-y-6">
+          <div className="order-2 space-y-6 md:col-span-3">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
               Gagnez un flux régulier de{" "}
               <span className="text-secondary">clients alignés</span> grâce à
