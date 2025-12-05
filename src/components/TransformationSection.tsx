@@ -48,11 +48,31 @@ const TransformationSection = () => {
           </h3>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {transformations.map((item, index) => {
+            {transformations.slice(0, 3).map((item, index) => {
               const Icon = item.icon;
               return (
                 <div
                   key={index}
+                  className="bg-card p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-transparent hover:border-accent group"
+                >
+                  <div className="flex flex-col items-center text-center gap-4">
+                    <div className="w-16 h-16 rounded-full gradient-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Icon className="w-8 h-8 text-primary" />
+                    </div>
+                    <p className="text-foreground font-medium leading-relaxed">
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 max-w-2xl mx-auto mt-6">
+            {transformations.slice(3).map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={index + 3}
                   className="bg-card p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-transparent hover:border-accent group"
                 >
                   <div className="flex flex-col items-center text-center gap-4">
