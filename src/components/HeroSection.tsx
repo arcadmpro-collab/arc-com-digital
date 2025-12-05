@@ -15,7 +15,7 @@ const HeroSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center">
           {/* Image with Colorful Arcs */}
-          <div className="flex justify-center md:justify-start order-1 md:col-span-2">
+          <div className="flex justify-center order-1 md:col-span-2">
             <div className="relative">
               {/* Colored arc rings */}
               <div className="absolute inset-0 -m-8 rounded-full border-[12px] border-primary opacity-20"></div>
