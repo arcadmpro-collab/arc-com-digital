@@ -69,7 +69,7 @@ const WhatYouGetSection = () => {
                 <div>
                   <h4 className="font-bold text-primary mb-2">La transformation</h4>
                   <p className="text-muted-foreground leading-relaxed">
-                    Vous serez capable d'identifier vos blocages et de commencer à attirer des clients alignés grâce à un message clair et un site optimisé.
+                    Vous aurez confiance en votre message, un site professionnel qui vous représente et des clients qui vous contactent régulièrement.
                   </p>
                 </div>
               </div>
