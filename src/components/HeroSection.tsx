@@ -1,18 +1,57 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { ArrowRight, Download } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 import coachPortrait from "@/assets/coach-portrait.png";
+import { supabase } from "@/integrations/supabase/client";
 
 const HeroSection = () => {
-  const scrollToContact = () => {
-    const element = document.getElementById("contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email && !isSubmitting) {
+      setIsSubmitting(true);
+      try {
+        const { error } = await supabase.functions.invoke("send-to-sheet", {
+          body: { email },
+        });
+
+        if (error) throw error;
+
+        toast({
+          title: "Merci !",
+          description: "Vous allez recevoir votre guide par email dans quelques instants.",
+        });
+        setEmail("");
+      } catch (error) {
+        console.error("Error submitting email:", error);
+        toast({
+          title: "Erreur",
+          description: "Une erreur est survenue. Veuillez réessayer.",
+          variant: "destructive",
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
   return (
     <section id="hero" className="py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
+        {/* Urgency Banner */}
+        <div className="text-center mb-8">
+          <div className="inline-block px-6 py-3 bg-highlight/20 rounded-full border border-highlight/30">
+            <span className="text-primary font-semibold text-sm md:text-base">
+              ✨ Téléchargez maintenant le guide gratuit et commencez à attirer vos clients alignés dès cette semaine !
+            </span>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center">
           {/* Image with Colorful Arcs */}
           <div className="flex justify-center order-1 md:col-span-2">
@@ -37,51 +76,39 @@ const HeroSection = () => {
           {/* Content */}
           <div className="order-2 space-y-6 md:col-span-3">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
-              Gagnez un flux régulier de{" "}
-              <span className="text-secondary">clients alignés</span> grâce à
-              une présence en ligne claire et professionnelle
+              Transformez votre visibilité et remplissez votre agenda grâce à{" "}
+              <span className="text-secondary">votre communication</span> et votre site web
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Finis les hauts et bas de l'activité, les messages flous et les
-              demandes aléatoires : transformez votre communication pour attirer
-              naturellement les bonnes personnes.
+              Découvrez les 7 erreurs qui bloquent votre visibilité et comment les corriger facilement
             </p>
 
-            <Button
-              onClick={scrollToContact}
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-white font-semibold rounded-full px-8 py-6 text-lg group"
-            >
-              Découvrir le programme
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-
-            <div className="pt-6 space-y-3">
-              <p className="font-semibold text-primary text-lg">
-                Pour qui c'est idéal
+            {/* Email Form */}
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Input
+                  type="email"
+                  placeholder="Votre adresse email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="flex-1 h-14 text-base border-2 border-primary/20 focus:border-primary rounded-full px-6"
+                />
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={isSubmitting}
+                  className="bg-highlight hover:bg-highlight/90 text-primary font-bold h-14 px-8 rounded-full group whitespace-nowrap disabled:opacity-50"
+                >
+                  {isSubmitting ? "Envoi..." : "Télécharger le guide gratuit"}
+                  <Download className="ml-2 group-hover:translate-y-1 transition-transform" />
+                </Button>
+              </div>
+              <p className="text-xs text-muted-foreground pl-2">
+                En téléchargeant ce guide, vous acceptez de recevoir nos conseils par email.
               </p>
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <span className="text-accent font-bold text-xl">✓</span>
-                  <span>Coachs de vie en lancement ou relance</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent font-bold text-xl">✓</span>
-                  <span>
-                    Coachs qui ont du mal à remplir leur agenda malgré leurs
-                    compétences
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent font-bold text-xl">✓</span>
-                  <span>
-                    Coachs qui veulent se démarquer sans se transformer en
-                    marketeur
-                  </span>
-                </li>
-              </ul>
-            </div>
+            </form>
           </div>
         </div>
       </div>
