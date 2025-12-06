@@ -76,8 +76,8 @@ const HeroSection = () => {
           {/* Content */}
           <div className="order-2 space-y-6 md:col-span-3">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
-              Identifiez vos blocages, clarifiez votre message et remplissez votre agenda avec des{" "}
-              <span className="text-secondary">clients alignés</span>
+              Identifiez vos blocages, clarifiez votre message et{" "}
+              <span className="text-secondary">remplissez votre agenda</span> avec des clients alignés
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
@@ -86,6 +86,9 @@ const HeroSection = () => {
 
             {/* Email Form */}
             <form onSubmit={handleSubmit} className="space-y-3">
+              <p className="text-sm font-medium text-primary">
+                ✨ Téléchargez le guide maintenant et commencez à attirer vos clients dès cette semaine !
+              </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Input
                   type="email"

@@ -71,6 +71,16 @@ const ContactSection = () => {
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Contact Info */}
           <div className="space-y-8">
+            {/* Mini CTA */}
+            <div className="bg-highlight/20 backdrop-blur-sm p-6 rounded-2xl border border-highlight/30">
+              <p className="text-white font-bold text-lg mb-2">
+                Prêt(e) à transformer votre activité ?
+              </p>
+              <p className="text-white/90">
+                Réservez votre appel gratuit maintenant et obtenez un plan d'action personnalisé !
+              </p>
+            </div>
+
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl">
               <h3 className="text-2xl font-bold text-white mb-6">
                 Parlons de votre projet
