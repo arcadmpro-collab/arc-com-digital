@@ -76,8 +76,8 @@ const HeroSection = () => {
           {/* Content */}
           <div className="order-2 space-y-6 md:col-span-3">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
-              Transformez votre visibilité et remplissez votre agenda grâce à{" "}
-              <span className="text-secondary">votre communication</span> et votre site web
+              Identifiez vos blocages, clarifiez votre message et remplissez votre agenda avec des{" "}
+              <span className="text-secondary">clients alignés</span>
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
