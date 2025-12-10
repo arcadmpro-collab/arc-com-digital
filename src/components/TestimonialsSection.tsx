@@ -4,7 +4,7 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       name: "Caroline Leroux",
-      content: "J'ai eu la chance de bénéficier des services de Coralie, qui a créé le site internet de mon entreprise. Je n'aurais pas pu trouver meilleure professionnelle ! Prix imbattables ! Rend la création de site enfin accessible aux jeunes entreprises. Très à l'écoute, très investie, agréable, n'hésite pas à tester nombre d'effets et mises en page pour que nous puissions visualiser et choisir ce qui nous plaît le plus.",
+      content: "J'ai eu la chance de bénéficier des services de Coralie, qui a créé le site internet de mon entreprise. Je n'aurais pas pu trouver meilleure professionnelle ! Prix imbattables ! Rend la création de site enfin accessible aux jeunes entreprises.",
       stars: 5,
     },
     {
@@ -14,7 +14,7 @@ const TestimonialsSection = () => {
     },
     {
       name: "Muriel Arquey",
-      content: "Coralie est une personne extrêmement bienveillante et à l'écoute de mes besoins. Elle s'adapte à chaque personne et à chaque demande avec calme et patience. Elle est organisée et structurée ce qui est très rassurant. Elle s'est occupée de mon site et de mes réseaux d'une façon prodigieuse ! Tout le monde me fait des compliments dessus. Je la recommande à 200% !!",
+      content: "Coralie est une personne extrêmement bienveillante et à l'écoute de mes besoins. Elle s'adapte à chaque personne et à chaque demande avec calme et patience. Elle est organisée et structurée ce qui est très rassurant. Je la recommande à 200% !!",
       stars: 5,
     },
   ];
