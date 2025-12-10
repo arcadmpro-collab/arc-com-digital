@@ -3,21 +3,23 @@ import { Star, Quote } from "lucide-react";
 const TestimonialsSection = () => {
   const testimonials = [
     {
-      name: "Marie L.",
-      role: "Coach en développement personnel",
-      content: "Grâce au guide et à l'accompagnement, j'ai enfin compris pourquoi je n'attirais pas les bons clients. Mon agenda commence à se remplir !",
+      name: "Caroline L.",
+      content: "J'ai eu la chance de travailler avec Coralie pour la création de mon site web. Elle a su rendre ma vision concrète, tester plusieurs mises en page et rendre le processus très agréable. Mon site reflète parfaitement qui je suis et mes offres. Une expérience incroyable !",
       stars: 5,
     },
     {
-      name: "Sophie D.",
-      role: "Coach de vie certifiée",
-      content: "Le guide m'a permis d'identifier mes erreurs et l'appel découverte m'a donné un plan d'action concret. Je recommande à 100% !",
+      name: "Julie S.",
+      content: "Coralie est très professionnelle et à l'écoute. Grâce à son travail, mon message est clair et mon site attire vraiment les bons clients. Je recommande vivement !",
       stars: 5,
     },
     {
-      name: "Julie M.",
-      role: "Coach en transition de carrière",
-      content: "Enfin une approche humaine et sans pression ! Mon message est maintenant clair et mon site reflète vraiment qui je suis.",
+      name: "Muriel A.",
+      content: "Coralie est organisée, créative et très rapide. Elle s'adapte à mes besoins et m'a aidée à mettre en valeur mon activité de coaching en ligne. Tous mes clients me font des compliments sur mon site. Je recommande à 200 % !",
+      stars: 5,
+    },
+    {
+      name: "Christelle L.",
+      content: "Travailler avec Coralie est un vrai plaisir ! Elle est professionnelle, adorable et sait exactement ce qui fonctionne. Son accompagnement a fait toute la différence dans la présentation de mon activité.",
       stars: 5,
     },
   ];
@@ -27,14 +29,11 @@ const TestimonialsSection = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
-            Ce qu'en disent les coachs
+            Ils ont transformé leur visibilité en ligne
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Des coachs comme vous ont transformé leur visibilité
-          </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
@@ -63,7 +62,6 @@ const TestimonialsSection = () => {
                 {/* Author */}
                 <div className="pt-4 border-t border-border">
                   <p className="font-bold text-primary">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                 </div>
               </div>
             </div>
