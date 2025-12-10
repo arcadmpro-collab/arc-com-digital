@@ -34,6 +34,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Get webhook URL from environment
     const webhookUrl = Deno.env.get("GOOGLE_SHEET_WEBHOOK_URL");
+    const systemeIoApiKey = Deno.env.get("SYSTEME_IO_API_KEY");
     
     if (!webhookUrl) {
       console.error("GOOGLE_SHEET_WEBHOOK_URL not configured");
@@ -59,7 +60,7 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Sending to Google Sheet:", sheetData);
 
     // Send to Google Sheet webhook
-    const response = await fetch(webhookUrl, {
+    const sheetResponse = await fetch(webhookUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,13 +68,44 @@ const handler = async (req: Request): Promise<Response> => {
       body: JSON.stringify(sheetData),
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
+    if (!sheetResponse.ok) {
+      const errorText = await sheetResponse.text();
       console.error("Google Sheet webhook error:", errorText);
-      throw new Error(`Webhook failed: ${response.status}`);
+      throw new Error(`Webhook failed: ${sheetResponse.status}`);
     }
 
     console.log("Successfully sent to Google Sheet");
+
+    // Send to Systeme.io
+    if (systemeIoApiKey) {
+      try {
+        console.log("Sending to Systeme.io:", email);
+        
+        const systemeResponse = await fetch("https://api.systeme.io/api/contacts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-API-Key": systemeIoApiKey,
+          },
+          body: JSON.stringify({
+            email: email,
+          }),
+        });
+
+        if (!systemeResponse.ok) {
+          const errorText = await systemeResponse.text();
+          console.error("Systeme.io API error:", errorText);
+          // Don't throw here, just log - we still want to succeed if Google Sheet worked
+        } else {
+          console.log("Successfully sent to Systeme.io");
+        }
+      } catch (systemeError) {
+        console.error("Error sending to Systeme.io:", systemeError);
+        // Don't throw here, just log
+      }
+    } else {
+      console.warn("SYSTEME_IO_API_KEY not configured, skipping Systeme.io");
+    }
 
     return new Response(
       JSON.stringify({ success: true, message: "Email enregistré avec succès" }),
