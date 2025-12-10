@@ -3,23 +3,18 @@ import { Star, Quote } from "lucide-react";
 const TestimonialsSection = () => {
   const testimonials = [
     {
-      name: "Caroline L.",
-      content: "J'ai eu la chance de travailler avec Coralie pour la création de mon site web. Elle a su rendre ma vision concrète, tester plusieurs mises en page et rendre le processus très agréable. Mon site reflète parfaitement qui je suis et mes offres. Une expérience incroyable !",
+      name: "Caroline Leroux",
+      content: "J'ai eu la chance de bénéficier des services de Coralie, qui a créé le site internet de mon entreprise. Je n'aurais pas pu trouver meilleure professionnelle ! Prix imbattables ! Rend la création de site enfin accessible aux jeunes entreprises. Très à l'écoute, très investie, agréable, n'hésite pas à tester nombre d'effets et mises en page pour que nous puissions visualiser et choisir ce qui nous plaît le plus.",
       stars: 5,
     },
     {
-      name: "Julie S.",
-      content: "Coralie est très professionnelle et à l'écoute. Grâce à son travail, mon message est clair et mon site attire vraiment les bons clients. Je recommande vivement !",
+      name: "Fezai Choko",
+      content: "Je recommande vivement ! Super développeuse ! Elle connaît très bien le marketing. Grâce à son travail, on a gagné beaucoup de visibilité et de nouveaux clients. Très pro et sympa, je recommande à 100 % !",
       stars: 5,
     },
     {
-      name: "Muriel A.",
-      content: "Coralie est organisée, créative et très rapide. Elle s'adapte à mes besoins et m'a aidée à mettre en valeur mon activité de coaching en ligne. Tous mes clients me font des compliments sur mon site. Je recommande à 200 % !",
-      stars: 5,
-    },
-    {
-      name: "Christelle L.",
-      content: "Travailler avec Coralie est un vrai plaisir ! Elle est professionnelle, adorable et sait exactement ce qui fonctionne. Son accompagnement a fait toute la différence dans la présentation de mon activité.",
+      name: "Muriel Arquey",
+      content: "Coralie est une personne extrêmement bienveillante et à l'écoute de mes besoins. Elle s'adapte à chaque personne et à chaque demande avec calme et patience. Elle est organisée et structurée ce qui est très rassurant. Elle s'est occupée de mon site et de mes réseaux d'une façon prodigieuse ! Tout le monde me fait des compliments dessus. Je la recommande à 200% !!",
       stars: 5,
     },
   ];
@@ -33,7 +28,7 @@ const TestimonialsSection = () => {
           </h2>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
