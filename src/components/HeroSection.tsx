@@ -52,7 +52,7 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center mt-8 md:mt-0">
+        <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center mt-16 md:mt-0">
           {/* Image with Colorful Arcs */}
           <div className="flex justify-center order-1 md:col-span-2">
             <div className="relative">
