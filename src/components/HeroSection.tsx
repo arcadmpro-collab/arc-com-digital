@@ -57,10 +57,10 @@ const HeroSection = () => {
           <div className="flex justify-center order-1 md:col-span-2">
             <div className="relative">
               {/* Colored arc rings */}
-              <div className="absolute inset-0 -m-8 rounded-full border-[12px] border-primary opacity-20"></div>
-              <div className="absolute inset-0 -m-12 rounded-full border-[12px] border-secondary opacity-30"></div>
-              <div className="absolute inset-0 -m-16 rounded-full border-[12px] border-accent opacity-30"></div>
-              <div className="absolute inset-0 -m-20 rounded-full border-[12px] border-highlight opacity-30"></div>
+              <div className="absolute inset-0 -m-3 rounded-full border-[8px] border-primary opacity-20"></div>
+              <div className="absolute inset-0 -m-5 rounded-full border-[8px] border-secondary opacity-30"></div>
+              <div className="absolute inset-0 -m-7 rounded-full border-[8px] border-accent opacity-30"></div>
+              <div className="absolute inset-0 -m-9 rounded-full border-[8px] border-highlight opacity-30"></div>
               
               {/* Main circular image */}
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white shadow-2xl">
