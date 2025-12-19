@@ -34,10 +34,11 @@ const FinalCTASection = () => {
         <Button
           onClick={scrollToContact}
           size="lg"
-          className="bg-highlight hover:bg-highlight/90 text-primary font-bold rounded-full px-10 py-7 text-lg group shadow-xl hover:shadow-2xl transition-all"
+          className="bg-highlight hover:bg-highlight/90 text-primary font-bold rounded-full px-6 md:px-10 py-6 md:py-7 text-base md:text-lg group shadow-xl hover:shadow-2xl transition-all max-w-full"
         >
-          <Calendar className="mr-2 w-6 h-6" />
-          Réservez votre appel découverte gratuit
+          <Calendar className="mr-2 w-5 h-5 md:w-6 md:h-6 shrink-0" />
+          <span className="hidden sm:inline">Réservez votre appel</span>
+          <span className="sm:hidden">Réservez votre appel gratuit</span>
         </Button>
 
         {/* Guarantees */}
@@ -45,10 +46,7 @@ const FinalCTASection = () => {
           {guarantees.map((item, index) => {
             const Icon = item.icon;
             return (
-              <div
-                key={index}
-                className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full"
-              >
+              <div key={index} className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
                 <Icon className="w-5 h-5 text-highlight" />
                 <span className="text-white font-medium">{item.text}</span>
               </div>
