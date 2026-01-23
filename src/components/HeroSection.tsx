@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import coachPortrait from "@/assets/coach-portrait.png";
+
 import { supabase } from "@/integrations/supabase/client";
 
 const HeroSection = () => {
@@ -52,29 +52,9 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center mt-16 md:mt-0">
-          {/* Image with Colorful Arcs */}
-          <div className="flex justify-center order-1 md:col-span-2">
-            <div className="relative">
-              {/* Colored arc rings */}
-              <div className="absolute inset-0 -m-3 rounded-full border-[8px] border-primary opacity-20"></div>
-              <div className="absolute inset-0 -m-5 rounded-full border-[8px] border-secondary opacity-30"></div>
-              <div className="absolute inset-0 -m-7 rounded-full border-[8px] border-accent opacity-30"></div>
-              <div className="absolute inset-0 -m-9 rounded-full border-[8px] border-highlight opacity-30"></div>
-              
-              {/* Main circular image */}
-              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white shadow-2xl">
-                <img
-                  src={coachPortrait}
-                  alt="Coach professionnelle"
-                  className="w-full h-full object-cover object-top scale-110"
-                />
-              </div>
-            </div>
-          </div>
-
+        <div className="mt-16 md:mt-0">
           {/* Content */}
-          <div className="order-2 space-y-6 md:col-span-3">
+          <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
               Identifiez vos blocages, clarifiez votre message et{" "}
               <span className="text-secondary">remplissez votre agenda</span> avec des clients alignés
