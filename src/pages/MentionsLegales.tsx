@@ -23,9 +23,9 @@ const MentionsLegales = () => {
               1. Éditeur du site
             </h2>
             <p className="text-muted-foreground">
-              Le site ARC'COM est édité par :<br />
+              Le site TUNNELCOACH est édité par :<br />
               <br />
-              <strong>ARC'COM</strong>
+              <strong>TUNNELCOACH</strong>
               <br />
               Email : arcadm.pro@gmail.com
               <br />
@@ -51,7 +51,7 @@ const MentionsLegales = () => {
             </h2>
             <p className="text-muted-foreground">
               L'ensemble du contenu de ce site (textes, images, vidéos, logos,
-              graphismes) est la propriété exclusive d'ARC'COM ou de ses
+              graphismes) est la propriété exclusive de TUNNELCOACH ou de ses
               partenaires. Toute reproduction, représentation, modification,
               publication ou adaptation de tout ou partie des éléments du site
               est strictement interdite sans autorisation écrite préalable.
@@ -63,7 +63,7 @@ const MentionsLegales = () => {
               4. Responsabilité
             </h2>
             <p className="text-muted-foreground">
-              ARC'COM s'efforce de fournir des informations aussi précises que
+              TUNNELCOACH s'efforce de fournir des informations aussi précises que
               possible. Toutefois, elle ne pourra être tenue responsable des
               omissions, des inexactitudes et des carences dans la mise à jour,
               qu'elles soient de son fait ou du fait des tiers partenaires qui
@@ -77,7 +77,7 @@ const MentionsLegales = () => {
             </h2>
             <p className="text-muted-foreground">
               Le site peut contenir des liens hypertextes vers d'autres sites.
-              ARC'COM décline toute responsabilité quant au contenu de ces sites
+              TUNNELCOACH décline toute responsabilité quant au contenu de ces sites
               externes.
             </p>
           </section>

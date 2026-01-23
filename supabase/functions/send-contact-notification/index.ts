@@ -49,7 +49,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification email to admin
     const emailResponse = await resend.emails.send({
-      from: "ARC'COM Contact <onboarding@resend.dev>",
+      from: "TUNNELCOACH Contact <onboarding@resend.dev>",
       to: ["arcadm.pro@gmail.com"],
       replyTo: email,
       subject: `Nouveau message de ${name}`,
@@ -60,7 +60,7 @@ const handler = async (req: Request): Promise<Response> => {
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
         <hr>
-        <p><em>Ce message a été envoyé depuis le formulaire de contact ARC'COM</em></p>
+        <p><em>Ce message a été envoyé depuis le formulaire de contact TUNNELCOACH</em></p>
       `,
     });
 
