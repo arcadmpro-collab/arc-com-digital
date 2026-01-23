@@ -17,7 +17,7 @@ const Navigation = () => {
     <nav className="gradient-hero py-6 px-6 md:px-12 sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="text-2xl md:text-3xl font-bold text-white">
-          ARC'COM
+          TUNNELCOACH
         </div>
 
         {/* Desktop Navigation */}
